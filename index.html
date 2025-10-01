@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Venkatesh Kunchala | Portfolio</title>
+<style>
+/* ---------- Base ---------- */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI', Tahoma, sans-serif;
+  color:#fff;
+  background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1abc9c);
+  background-size:400% 400%;
+  animation:bgShift 20s ease infinite;
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
+a{color:#1abc9c;text-decoration:none;}
+a:hover{color:#16a085;}
+@keyframes bgShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+/* ---------- Welcome ---------- */
+#greeting{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.75);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:2rem;z-index:10;
+}
+#welcome-animation span{
+  display:inline-block;
+  margin:0 3px;
+  animation: moveX 2s ease-in-out infinite alternate;
+}
+#welcome-animation span:nth-child(1){animation-delay:0s;}
+#welcome-animation span:nth-child(2){animation-delay:0.1s;}
+#welcome-animation span:nth-child(3){animation-delay:0.2s;}
+#welcome-animation span:nth-child(4){animation-delay:0.3s;}
+#welcome-animation span:nth-child(5){animation-delay:0.4s;}
+#welcome-animation span:nth-child(6){animation-delay:0.5s;}
+#welcome-animation span:nth-child(7){animation-delay:0.6s;}
+#welcome-animation span:nth-child(8){animation-delay:0.7s;}
+#welcome-animation span:nth-child(9){animation-delay:0.8s;}
+@keyframes moveX {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(15px); }
+  100% { transform: translateX(0); }
+}
+
+#greeting h1{font-size:3rem;margin-bottom:1rem;}
+#greeting p{font-size:1.2rem;margin-top:.5rem;}
+#enter-btn{
+  margin-top:2rem;padding:1rem 2rem;font-size:1.2rem;
+  background:#e74c3c;border:none;border-radius:8px;
+  cursor:pointer;color:#fff;transition:all .3s ease;
+}
+#enter-btn:hover{background:#c0392b;transform:scale(1.05);}
+
+/* ---------- Navigation Header ---------- */
+nav{
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:1rem 0;
+  border-radius:10px;
+  margin-bottom:2rem;
+  z-index:5;
+  flex-wrap:wrap;
+}
+nav a{
+  font-weight:bold;
+  padding:0.5rem 1rem;
+  border-radius:5px;
+  transition:0.3s;
+  color:#1abc9c;
+}
+nav a:hover{
+  background:rgba(26,188,156,0.3);
+  transform:scale(1.05);
+}
+
+/* Hamburger menu for small screens */
+#menu-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  cursor:pointer;
+  position:sticky;
+  top:1rem;
+  z-index:10;
+  margin-left:1rem;
+}
+#menu-toggle span{
+  width:25px;height:3px;
+  background:#1abc9c;
+  margin:4px 0;
+  transition:0.4s;
+}
+
+/* ---------- Main Layout ---------- */
+#main-content{display:none;max-width:1200px;margin:auto;padding:1rem;}
+header{
+  display:flex;align-items:center;
+  background:rgba(0,0,0,0.5);border-radius:10px;margin:2rem 0;
+  padding:1.5rem;gap:1.5rem;
+}
+header img{
+  width:140px;height:140px;border-radius:50%;
+  object-fit:cover;border:4px solid #1abc9c;
+}
+header div{flex:1;}
+header h2{color:#1abc9c;margin-bottom:.5rem;}
+header p{margin-bottom:.4rem;}
+
+/* ---------- Sections ---------- */
+section{
+  background:rgba(0,0,0,0.4);
+  padding:1.5rem;border-radius:10px;margin-bottom:2rem;
+}
+h3{color:#1abc9c;margin-bottom:1rem;}
+
+/* ---------- Skills ---------- */
+.skill-container{
+  display:flex;flex-wrap:wrap;gap:15px;
+}
+.skill-block{
+  background:rgba(26,188,156,0.2);
+  padding:10px 15px;border-radius:8px;
+  display:flex;align-items:center;min-width:160px;
+  transition:transform 0.3s,background 0.3s,box-shadow 0.3s;
+}
+.skill-block img{width:24px;height:24px;margin-right:8px;}
+.skill-block:hover{
+  transform:translateY(-5px);
+  background:rgba(26,188,156,0.4);
+  box-shadow:0 0 15px #1abc9c;
+}
+
+/* ---------- Education ---------- */
+.education-card{
+  background:rgba(26,188,156,0.2);
+  padding:15px 20px;
+  border-left:5px solid #1abc9c;
+  border-radius:8px;
+  margin-bottom:1rem;
+}
+
+/* ---------- Projects ---------- */
+.project-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  margin-bottom:1.5rem;
+}
+.project-grid img{
+  width:100%;
+  border-radius:10px;
+  object-fit:cover;
+}
+
+/* ---------- Download Resume ---------- */
+#download-resume a{
+  display:inline-block;
+  padding:0.8rem 1.5rem;
+  background:#1abc9c;
+  color:#fff;
+  border-radius:8px;
+  font-weight:bold;
+  transition:background 0.3s,transform 0.3s;
+}
+#download-resume a:hover{
+  background:#16a085;
+  transform:scale(1.05);
+}
+
+/* ---------- Contact Me Section ---------- */
+#contact a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#1abc9c;
+  transition:transform 0.3s;
+}
+#contact a:hover{transform:scale(1.05);}
+#contact div{display:flex;align-items:center;gap:10px;}
+
+/* ---------- Footer ---------- */
+footer{
+  text-align:center;
+  padding:1.5rem;
+  background:rgba(0,0,0,0.6);
+  border-radius:10px;
+}
+footer h4{margin-bottom:0.8rem;font-weight:normal;}
+.footer-icons{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin-top:0.5rem;
+}
+.footer-icons a img{
+  width:28px;height:28px;
+  transition:transform 0.3s;
+  filter:invert(100%);
+}
+.footer-icons a img:hover{transform:scale(1.1);}
+
+/* ---------- Scroll Animations ---------- */
+.scroll-left, .scroll-right {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+.scroll-right { transform: translateX(50px); }
+.scroll-in { opacity: 1; transform: translateX(0); }
+
+/* ---------- Responsive ---------- */
+@media(max-width:768px){
+  header{flex-direction:column;text-align:center;}
+  .project-grid{grid-template-columns:1fr;}
+  nav{display:none;flex-direction:column;gap:10px;width:100%;position:relative;}
+  #menu-toggle{display:flex;}
+}
+</style>
+</head>
+<body>
+
+<!-- Welcome Page -->
+<div id="greeting">
+  <div id="welcome-animation">
+    <h1>
+      <span>Welcome</span>
+      <span>I</span>
+      <span>am</span>
+      <span>Venkatesh</span>
+      <span>Kunchala</span>
+    </h1>
+    <p>Glad to see you here! Click below to explore my projects and skills.</p>
+    <button id="enter-btn">Enter Portfolio</button>
+  </div>
+</div>
+
+<div id="main-content">
+
+  <!-- Hamburger Toggle -->
+  <div id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Navigation Header -->
+  <nav id="navbar">
+    <a href="#about">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#download-resume">Resume</a>
+    <a href="#contact">Contact Me</a>
+  </nav>
+
+  <!-- Profile Header -->
+  <header class="scroll-left">
+    <img src="page2.html.jpg" alt="Venkatesh Kunchala">
+    <div>
+      <h2>Venkatesh Kunchala – Java Full Stack Developer</h2>
+      <p>Detail-oriented developer skilled in Java, SQL, Spring Boot, and Hibernate & Web technologies</p>
+      <p>Experienced with Eclipse IDE, MySQL Workbench, Postman, Git, and collaborative development workflows.</p>
+      <p>Passionate about building high-performance, scalable, and secure backend systems with clean code practices.</p>
+    </div>
+  </header>
+
+  <!-- About Me -->
+  <section id="about" class="scroll-left">
+    <h3>About Me</h3>
+    <p>I am a passionate and detail-oriented Java Backend Developer with hands-on experience in building robust and scalable applications. 
+       I have in-depth knowledge of Java, J2EE, Spring Boot, Hibernate, Servlets, and JSP, with strong database integration skills using MySQL. 
+       My experience includes designing RESTful APIs, implementing business logic, and ensuring secure and optimized application performance. 
+       I enjoy problem-solving, learning new technologies, and collaborating with teams to deliver impactful software solutions.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="scroll-right">
+    <h3>Technical Skills</h3>
+    <div class="skill-container">
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/java.svg" alt="Java">Java</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/spring.svg" alt="Spring">Spring Boot</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hibernate.svg" alt="Hibernate">Hibernate</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mysql.svg" alt="MySQL">MySQL</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/html5.svg" alt="HTML5">HTML5</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/css3.svg" alt="CSS3">CSS3</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/javascript.svg" alt="JavaScript">JavaScript</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/git.svg" alt="Git">Git</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/eclipseide.svg" alt="Eclipse">Eclipse IDE</div>
+      <div class="skill-block"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/postman.svg" alt="Postman">Postman</div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="scroll-left">
+    <h3>Education</h3>
+    <div class="education-card">
+      <h4>Bachelor of Technology in Electronics and Communication Engineering</h4>
+      <p><strong>Institute:</strong> Yogananda Institute of Technology and Science, Tirupati</p>
+      <p><strong>Year:</strong> 2023 | <strong>Percentage:</strong> 70%</p>
+    </div>
+    <div class="education-card">
+      <h4>Intermediate in MPC</h4>
+      <p><strong>College:</strong> Rayalaseema Junior College, Sri Kalahasti</p>
+      <p><strong>Year:</strong> 2019 | <strong>Percentage:</strong> 81%</p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="scroll-right">
+    <h3>Projects</h3>
+    <div class="project-grid">
+      <div>
+        <strong>Shopping Cart Platform</strong>
+        <p> <br>In this project, we developed a modular e-commerce backend that allows customers to interact with a shopping cart system. The application supports CRUD (Create, Read, Update, Delete) operations on products, enabling users to add items to their cart, view product details, update quantities, or remove items as needed. <br> <br>
+
+The backend was implemented using Java and Spring Boot, ensuring a robust and scalable architecture. We used MySQL as the database to store product information, user details, and cart data, maintaining data integrity and reliability. RESTful APIs were designed to handle all operations, allowing seamless communication between the frontend and backend while supporting future scalability. <br> <br>
+
+Error handling was implemented at multiple levels to ensure a smooth user experience. For example, the system validates product availability, prevents adding duplicate entries, and handles invalid requests gracefully. Transactions are managed efficiently to maintain consistency, especially during simultaneous operations like adding or removing items from the cart. <br> <br>
+
+The project demonstrates strong application of object-oriented principles, modular coding practices, and database integration skills. It provides a practical example of building a full-featured e-commerce backend, highlighting proficiency in backend development, API design, and secure, maintainable code implementation.</p>
+      </div>
+      <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/1c77c4cc-a4ef-4761-be86-27a0509f3bbd.png" alt="Shopping Cart">
+    </div>
+    <div class="project-grid">
+      <div>
+        <strong>ATM System Simulation</strong>
+        <p> <br> The console-based banking application is a text-driven system that allows users to perform essential banking operations through a command-line interface. Users interact by selecting menu options or entering commands, making it lightweight and ideal for focusing on backend logic without a graphical interface. <br> <br>
+
+The application is built using object-oriented programming (OOP) principles. Each account is represented as an object of an Account class with attributes like accountNumber, accountHolderName, balance, and pin. Encapsulation ensures sensitive data such as balances and PINs are private and accessible only via methods like checkBalance(), deposit(), and withdraw(). Abstraction hides internal logic, allowing users to interact only with the provided methods. OOP also supports reusability and scalability, making it easy to add new account types or features in the future. <br> <br>
+
+Secure PIN validation ensures that only authorized users can access their accounts by matching the entered PIN against the stored PIN.  <br> <br>
+
+The application implements core banking functions: balance inquiry, deposits, and withdrawals, with proper validation to maintain account integrity. This combination of OOP, security, and console interface makes the system simple, modular, and maintainable while effectively simulating real-world banking operations.</p>
+      </div>
+      <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/70c0a962-a56a-4c1d-b3d3-04fbd004a338.png" alt="ATM Simulation">
+    </div>
+    <div class="project-grid">
+      <div>
+        <strong>IoT-Based Drowsiness Alert System</strong>
+        <p><br> Real-time system integrating sensors and microcontrollers to detect driver fatigue and trigger alerts for safety.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Resume -->
+  <section id="download-resume" class="scroll-left">
+    <h3>View My Resume</h3>
+    <a id="resumelink" href="https://drive.google.com/file/d/1V43Y926GqP39zwWY5FcCHF8B9WpvJTp8/view?usp=drivesdk" target="_blank">Click Here</a>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="scroll-left">
+    <h3>Contact Me</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <a href="mailto:venkateshkunchala412@gmail.com">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mail-dot-ru.svg" alt="Email" style="width:24px;height:24px;filter:invert(100%);">
+        venkateshkunchala412@gmail.com
+      </a>
+      <a href="tel:7093712253">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/phone.svg" alt="Phone" style="width:24px;height:24px;filter:invert(100%);">
+        7093712253
+      </a>
+      <div>
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/home.svg" alt="Address" style="width:24px;height:24px;filter:invert(100%);">
+        Bangalore, Karnataka
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="scroll-in">
+    <h4>Reach Me Through</h4>
+    <div class="footer-icons">
+      <a href="mailto:venkateshkunchala412@gmail.com" title="Email">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mail-dot-ru.svg" alt="Email">
+      </a>
+      <a href="https://www.linkedin.com/in/venkatesh-kunchala-aa60742a0" target="_blank" title="LinkedIn">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
+      </a>
+      <a href="https://www.instagram.com/the_name_is_v_e_n_k_a_t_e_s_h" target="_blank" title="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+      </a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  // Welcome page enter
+  const greetingBtn=document.getElementById('enter-btn');
+  const mainContent=document.getElementById('main-content');
+  const greeting=document.getElementById('greeting');
+  greetingBtn.addEventListener('click',()=>{greeting.style.display='none';mainContent.style.display='block';});
+
+  // Mobile menu toggle
+  const menuToggle=document.getElementById('menu-toggle');
+  const navbar=document.getElementById('navbar');
+  menuToggle.addEventListener('click',()=>{
+    if(navbar.style.display==='flex'){
+      navbar.style.display='none';
+    } else{
+      navbar.style.display='flex';
+      navbar.style.flexDirection='column';
+      navbar.style.alignItems='center';
+    }
+  });
+
+  // Scroll animations
+  const scrollElements = document.querySelectorAll('.scroll-left, .scroll-right');
+  const elementInView = (el, offset = 100) => el.getBoundingClientRect().top <= window.innerHeight - offset;
+  const displayScrollElement = (element) => element.classList.add('scroll-in');
+  const handleScrollAnimation = () => {
+    scrollElements.forEach(el => { if(elementInView(el, 100)) displayScrollElement(el); });
+  };
+  window.addEventListener('scroll', handleScrollAnimation);
+});
+</script>
+</body>
+</html>
